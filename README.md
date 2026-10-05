@@ -29,3 +29,10 @@ The library exists to inspect and construct IEEE 754 floats at the bit level wit
 The output is always **big-endian**, regardless of host architecture. If your data is little-endian, reverse the byte array before calling `parse` and after calling `serialize`.
 
 `mantissa` is a `bigint` because single precision has a 23-bit field and double precision has a 52-bit field; the latter exceeds the safe integer range of a signed 32-bit context and using `bigint` everywhere keeps the API uniform across precisions.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
