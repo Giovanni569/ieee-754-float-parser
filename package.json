@@ -1,6 +1,6 @@
 {
   "name": "ieee-754-float-parser",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Parses and serializes binary representations of single and double precision floating point numbers.",
   "type": "module",
   "main": "src/index.js",
